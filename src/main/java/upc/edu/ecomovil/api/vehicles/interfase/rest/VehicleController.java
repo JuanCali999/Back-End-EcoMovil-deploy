@@ -51,7 +51,7 @@ public class VehicleController {
         return new ResponseEntity<>(vehicleResource, HttpStatus.CREATED);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<VehicleResource>> getAllVehicles(){
         var getAllVehiclesQuery = new GetAllVehiclesQuery();
         var vehicles = vehicleQueryService.handle(getAllVehiclesQuery);
@@ -59,7 +59,7 @@ public class VehicleController {
         return ResponseEntity.ok(vehicleResources);
     }
 
-    @GetMapping("/id/{vehicleId}")
+    @GetMapping("/{vehicleId}")
     public ResponseEntity<VehicleResource> getVehicleById(@PathVariable Long vehicleId){
         var getVehicleByIdQuery = new GetVehicleByIdQuery(vehicleId);
         var vehicle = vehicleQueryService.handle(getVehicleByIdQuery);
@@ -76,7 +76,6 @@ public class VehicleController {
         var vehicleResources = vehicles.stream().map(VehicleResourceFromEntityAssembler::toResourceFromEntity).toList();
         return ResponseEntity.ok(vehicleResources);
     }
-
 }
 
 

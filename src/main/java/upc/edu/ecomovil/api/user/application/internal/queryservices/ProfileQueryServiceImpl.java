@@ -19,18 +19,18 @@ public class ProfileQueryServiceImpl implements ProfileQueryService {
     this.profileRepository = profileRepository;
   }
 
-    @Override
-    public Optional<Profile> handle(GetProfileByIdQuery query) {
-        return profileRepository.findById(query.profileId());
+  @Override
+  public Optional<Profile> handle(GetProfileByIdQuery query) {
+    return profileRepository.findById(query.profileId());
   }
 
-    @Override
-    public List<Profile> handle(GetAllProfilesQuery query) {
-        return profileRepository.findAll();
-    }
+  @Override
+  public List<Profile> handle(GetAllProfilesQuery query) {
+    return profileRepository.findAll();
+  }
 
-    @Override
-    public Optional<Profile> handle(GetProfileByEmailQuery query) {
-        return profileRepository.findByEmail(query.email());
-    }
+  @Override
+  public Optional<Profile> handle(GetProfileByEmailQuery query) {
+    return profileRepository.findByEmail(query.email());
+  }
 }

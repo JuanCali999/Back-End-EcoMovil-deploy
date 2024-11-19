@@ -9,9 +9,9 @@ import java.util.Optional;
 
 @Service
 public class ExternalVehicleService {
-public final VehicleContextFacade vehicleContextFacade;
+    public final VehicleContextFacade vehicleContextFacade;
 
-@Autowired
+    @Autowired
     public ExternalVehicleService(VehicleContextFacade vehicleContextFacade) {
         this.vehicleContextFacade = vehicleContextFacade;
     }

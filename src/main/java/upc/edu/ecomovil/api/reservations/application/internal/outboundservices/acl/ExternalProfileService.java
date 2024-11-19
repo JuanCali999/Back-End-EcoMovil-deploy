@@ -17,7 +17,7 @@ public class ExternalProfileService {
         this.profilesContextFacade = profilesContextFacade;
     }
 
-  public Optional<Profile> fetchProfileById(Long id) {
+    public Optional<Profile> fetchProfileById(Long id) {
         return profilesContextFacade.getProfileById(id);
     }
 }

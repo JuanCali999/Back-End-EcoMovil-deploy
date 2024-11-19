@@ -96,7 +96,7 @@ public class ReservationController {
         return ResponseEntity.ok(reservationResource);
     }
 
-  //update reservation
+    //update reservation
     @PutMapping("/{reservationId}")
     public ResponseEntity<ReservationResource> updateReservation(@PathVariable Long reservationId, @RequestBody CreateReservationResource resource){
         var updateCommand = new UpdateReservationStatusCommand(reservationId, resource.status());

@@ -48,7 +48,7 @@ public class Plan2Controller {
         return new ResponseEntity<>(plan2Resource, HttpStatus.CREATED);
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<Plan2Resource>> getAllPlan2(){
         var getAllPlan2Query = new GetAllPlans2Query();
         var plan2 = plan2QueryService.handle(getAllPlan2Query);

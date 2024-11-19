@@ -16,10 +16,6 @@ import upc.edu.ecomovil.api.vehicles.domain.model.valueobjects.Review;
 @Entity
 public class Vehicle extends AuditableAbstractAggregateRoot<Vehicle> {
 
-    //relacion con student
-    @ManyToOne
-    @JoinColumn(name = "student_id")  // Relaciona con la tabla 'Plan'
-    private Student student;
 
     @Embedded
     private Details details;
@@ -42,9 +38,10 @@ public class Vehicle extends AuditableAbstractAggregateRoot<Vehicle> {
     @Getter
     private Float lng; //longitud
 
+    @Getter
+    private String description;
 
-
-    public Vehicle(String type, String name, Integer year, Integer review, Double pricerent, Double pricesell, Boolean isAvailable, String imageUrl, Float lat, Float lng) {
+    public Vehicle(String type, String name, Integer year, Integer review, Double pricerent, Double pricesell, Boolean isAvailable, String imageUrl, Float lat, Float lng, String description) {
         this.details = new Details(type, name, year);
         this.review = new Review(review);
         this.prices = new Prices(pricerent, pricesell);
@@ -52,9 +49,10 @@ public class Vehicle extends AuditableAbstractAggregateRoot<Vehicle> {
         this.ImageUrl = imageUrl;
         this.lat = lat;
         this.lng = lng;
+        this.description = description;
     }
 
-    public Vehicle(CreateVehicleCommand command, Student student) {
+    public Vehicle(CreateVehicleCommand command) {
         this.details = new Details(command.type(), command.name(), command.year());
         this.review = new Review(command.review());
         this.prices = new Prices(command.pricerent(), command.pricesell());
@@ -62,7 +60,7 @@ public class Vehicle extends AuditableAbstractAggregateRoot<Vehicle> {
         this.ImageUrl = command.imageUrl();
         this.lat = command.lat();
         this.lng = command.lng();
-        this.student = student;
+        this.description = command.description();
     }
 
     public Vehicle(){}
@@ -119,7 +117,4 @@ public class Vehicle extends AuditableAbstractAggregateRoot<Vehicle> {
         return prices.getPriceSell();
     }
 
-    public Student getStudent() {
-        return student;
-    }
 }

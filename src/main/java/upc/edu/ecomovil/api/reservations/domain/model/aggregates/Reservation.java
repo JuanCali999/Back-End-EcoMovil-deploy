@@ -13,27 +13,27 @@ public class Reservation extends AuditableAbstractAggregateRoot<Reservation> {
 
     String status; //pending, accepted, rejected, cancelled
 
- @ManyToOne
+    @ManyToOne
     @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;
 
- @ManyToOne
+    @ManyToOne
     @JoinColumn(name = "profile_id")
     private Profile profile;
 
- public Reservation(String status, Vehicle vehicle, Profile profile) {
-    this.status = status;
-    this.vehicle = vehicle;
-    this.profile = profile;
- }
+    public Reservation(String status, Vehicle vehicle, Profile profile) {
+        this.status = status;
+        this.vehicle = vehicle;
+        this.profile = profile;
+    }
 
- public Reservation(CreateReservationCommand command, Vehicle vehicle, Profile profile) {
-    this.status = command.status();
-    this.vehicle = vehicle;
-    this.profile = profile;
- }
+    public Reservation(CreateReservationCommand command, Vehicle vehicle, Profile profile) {
+        this.status = command.status();
+        this.vehicle = vehicle;
+        this.profile = profile;
+    }
 
- public Reservation(){}
+    public Reservation(){}
 
 
 

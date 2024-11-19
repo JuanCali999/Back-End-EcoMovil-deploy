@@ -12,20 +12,20 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class OpenApiConfiguration {
-        @Bean
-        public OpenAPI ecomovilOpenApi() {
-            // General configuration
-            var openApi = new OpenAPI();
-            openApi.info(new Info()
-                    .title("UPC Ecomovil API")
-                    .description("UPC Ecomovil application RESTful API documentation")
-                    .version("1.0.0")
-                    .license(new License().name("Apache 2.0").url("http://springdoc.org")))
-                    .externalDocs(new ExternalDocumentation()
-                            .description("UPC Ecomovil API Wiki Documentation")
-                            .url("https://upc-ecomovil-api.wiki.github.io/docs"));
-            // Add security scheme
-            final String securitySchemeName = "bearerAuth";
+    @Bean
+    public OpenAPI ecomovilOpenApi() {
+        // General configuration
+        var openApi = new OpenAPI();
+        openApi.info(new Info()
+                        .title("UPC Ecomovil API")
+                        .description("UPC Ecomovil application RESTful API documentation")
+                        .version("1.0.0")
+                        .license(new License().name("Apache 2.0").url("http://springdoc.org")))
+                .externalDocs(new ExternalDocumentation()
+                        .description("UPC Ecomovil API Wiki Documentation")
+                        .url("https://upc-ecomovil-api.wiki.github.io/docs"));
+        // Add security scheme
+        final String securitySchemeName = "bearerAuth";
 
         openApi.addSecurityItem(new SecurityRequirement()
                         .addList(securitySchemeName))
@@ -37,9 +37,9 @@ public class OpenApiConfiguration {
                                         .scheme("bearer")
                                         .bearerFormat("JWT")));
 
-            // Return OpenAPI configuration object with all the settings
+        // Return OpenAPI configuration object with all the settings
 
-            return openApi;
-        }
+        return openApi;
+    }
 
 }
